@@ -1,31 +1,21 @@
-// ATIVIDADE 5 (base da atividade 3)
-// ==============================
+const input = document.getElementById("input");
+const lista = document.getElementById("lista");
 
-// PARTE 1 — Criar função para adicionar tarefas
-// → função responsável por criar o <li>
-// → reutilizar código da atividade 3
+let tarefas = JSON.parse(localStorage.getItem("tarefas")) || [];
+lista.innerHTML = tarefas.map(t => <li>${t}</li>).join("");
 
-// PARTE 2 — Evento do botão "Adicionar"
-// → usar addEventListener
-// → pegar valor do input
-// → chamar função que cria o <li>
-// → limpar o input
+document.getElementById("add").onclick = function() {
+    if (input.value != "") {
+        tarefas.push(input.value);
+        localStorage.setItem("tarefas", JSON.stringify(tarefas));
+        lista.innerHTML += <li>${input.value}</li>;
+        input.value = "";
+    }
+}
 
-// PARTE 3 — Salvar dados no localStorage
-// → criar função salvar()
-// → percorrer todos os <li>
-// → pegar o texto de cada item
-// → guardar em uma lista (array)
-// → transformar em JSON (JSON.stringify)
-// → salvar no localStorage
-
-// PARTE 4 — Carregar dados ao abrir a página
-// → usar: document.addEventListener("DOMContentLoaded")
-// → buscar dados do localStorage
-// → transformar JSON em lista (JSON.parse)
-// → recriar os <li> na tela
-
-// PARTE 5 — Atualizar sempre que mudar
-// → chamar salvar() ao:
-//    - adicionar item
-//    - Carregar a página
+lista.onclick = function(e) {
+    if (e.target.tagName == "LI") {
+        e.target.style.textDecoration =
+            e.target.style.textDecoration == "line-through" ? "none" : "line-through";
+    }
+}
