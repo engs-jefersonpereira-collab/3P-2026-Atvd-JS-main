@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista Dinâmica</title>
+    <style>
+        body { font-family: sans-serif; padding: 20px; }
+        ul { margin-top: 20px; border-top: 1px solid #ccc; padding-top: 10px; }
+        li { margin-bottom: 5px; color: #333; }
+    </style>
+</head>
+<body>
+
+    <h2>Lista de Front</h2>
+    
+    <input type="text" id="campoTexto" placeholder="Escreva algo aqui...">
+    <button id="btnAdicionar">Adicionar</button>
+
+    <ul id="listaContainer"></ul>
+
+    <script>
+        const input = document.getElementById('campoTexto');
+        const botao = document.getElementById('btnAdicionar');
+        const lista = document.getElementById('listaContainer');
+
+        botao.addEventListener('click', function() {
+            const valorInput = input.value;
+
+            if (valorInput.trim() !== "") {
+            
+                const novoItem = document.createElement('li');
+            
+                novoItem.textContent = valorInput;
+
+                lista.appendChild(novoItem);
+
+                input.value = "";
+                input.focus(); 
+                
+            } else {
+                alert("Digite algum texto primeiro!");
+            }
+        });
+
+        input.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                botao.click();
+            }
+        });
+    </script>
+
+</body>
+</html>
