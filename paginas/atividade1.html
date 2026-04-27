@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Atividade 1</title>
+</head>
+<body>
+
+    <h1 id="titulo">Inicio</h1>
+    <button id="botao">Clique Aqui</button>
+
+    <script>
+        const elementoTitulo = document.getElementById('titulo');
+        const elementoBotao = document.querySelector('#botao');
+
+        elementoBotao.addEventListener('click', () => {
+            elementoTitulo.textContent = 'Olá Professor!';
+        });
+    </script>
+
+</body>
+</html>
